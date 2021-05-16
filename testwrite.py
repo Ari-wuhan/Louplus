@@ -1,0 +1,11 @@
+fobj = open("testfree.txt", 'w')
+fobj.write('powerpork\n')
+fobj.write('indrag')
+fobj.write('mishti')
+fobj.write('sankarshan')
+fobj.close()
+
+fobj = open('testfree.txt')
+s = fobj.read()
+fobj.close()
+print(s)
