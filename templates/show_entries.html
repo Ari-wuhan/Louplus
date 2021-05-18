@@ -1,0 +1,26 @@
+<!--这个模板继承了上面的layout.html模板用来显示信息。
+注意for遍历了所有我们用render_template()函数传入的信息。
+我们同样告诉表单提交到add_entry函数通过使用 HTTP 的POST方法。-->
+{% extends "layout.html" %} {% block body %} {% if session.login %}
+<form action="{{ url_for('add_entry') }}" method="post" class="add-entry">
+  <dl>
+    <dt>Title:</dt>
+    <dd><input type="text" size="30" name="title" /></dd>
+    <dt>Text:</dt>
+    <dd><textarea name="text" rows="5" cols="40"></textarea></dd>
+    <dd><input type="submit" value="Share" /></dd>
+  </dl>
+</form>
+{% endif %}
+<ul class="entries">
+  {% for entry in entries %}
+  <li>
+    <h2>{{ entry.title }}</h2>
+    {{ entry.text|safe }}
+  </li>
+  {% else %}
+  <li><em>Unbelievable. No entries here so far.</em></li>
+  <li>{% endfor %}</li>
+</ul>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+<!--这个模板包含 HTML 主体结构，
+标题和一个登录链接（或者当用户已登录则提供注销）。
+如果有闪现信息的话它也将显示闪现信息。-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flaskr</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="page">
+      <h1>Flaskr</h1>
+      <div class="metanav">
+        {% if not session.login %}
+        <a href="{{ url_for('login') }}">log in</a>
+        {% else %}
+        <a href="{{ url_for('logout') }}">log out</a>
+        {% endif %}
+      </div>
+      {% for message in get_flashed_messages() %}
+      <div class="flash">{{ message }}</div>
+      {% endfor %} {% block body %}{% endblock %}
+    </div>
+  </body>
+</html>
