@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--登陆模版，继承 layout 模版，只显示一个允许用户登陆的表单-->
 {% extends "layout.html" %} {% block body %}
 <h2>Login</h2>
@@ -12,4 +13,30 @@
     <dd><input type="submit" value="Login" /></dd>
   </dl>
 </form>
+=======
+{% extends "base.html" %} {% block body %}
+<h1>Login</h1>
+{% if error %}
+<p class="error"><strong>Error:</strong> {{ error }} {% endif %}</p>
+
+<form method="post">
+  <dl>
+    <dt>Username:</dt>
+    <dd>
+      <input
+        type="text"
+        name="username"
+        value="{{
+          request.form.username }}"
+      />
+    </dd>
+
+    <dt>Password:</dt>
+    <dd><input type="password" name="password" /></dd>
+  </dl>
+
+  <p><input type="submit" value="Login" /></p>
+</form>
+
+>>>>>>> origin/master
 {% endblock %}
